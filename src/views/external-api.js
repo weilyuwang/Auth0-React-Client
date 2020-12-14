@@ -34,6 +34,22 @@ export const ExternalApi = () => {
     }
   };
 
+  const callSecureAndScopedAPI = async () => {
+    try {
+      const token = await getAccessTokenSilently();
+
+      const response = await fetch("http://localhost:8080/api/private-scoped", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const responseData = await response.json();
+      setMessage(responseData);
+    } catch (err) {
+      setMessage(err.message);
+    }
+  };
+
   return (
     <Container className="mb-5">
       <h1>Spring Backend API</h1>
@@ -48,6 +64,13 @@ export const ExternalApi = () => {
         </Button>
         <Button onClick={callSecureAPI} color="primary" className="mt-5">
           Get Private Message
+        </Button>
+        <Button
+          onClick={callSecureAndScopedAPI}
+          color="primary"
+          className="mt-5"
+        >
+          Get Private & Scoped Message
         </Button>
       </ButtonGroup>
 
