@@ -10,7 +10,7 @@ export const ExternalApi = () => {
 
   const callAPI = async () => {
     try {
-      const response = await fetch("http://localhost:7000/api/public-message");
+      const response = await fetch("http://localhost:8080/api/public");
       const responseData = await response.json();
       setMessage(responseData);
     } catch (err) {
@@ -22,14 +22,11 @@ export const ExternalApi = () => {
     try {
       const token = await getAccessTokenSilently();
 
-      const response = await fetch(
-        "http://localhost:7000/api/private-message",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await fetch("http://localhost:8080/api/private", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       const responseData = await response.json();
       setMessage(responseData);
     } catch (err) {
@@ -39,11 +36,11 @@ export const ExternalApi = () => {
 
   return (
     <Container className="mb-5">
-      <h1>External API</h1>
+      <h1>Spring Backend API</h1>
       <p>
-        You use will use a button to call an external API using an access token,
-        and the API will validate it using the API's audience value.{" "}
-        <strong>This route should be private</strong>.
+        You use will use a button to call an Spring Boot Backend API using an
+        access token, and the API will validate it using the API's audience
+        value. <strong>This route should be private</strong>.
       </p>
       <ButtonGroup>
         <Button onClick={callAPI} color="primary" className="mt-5">

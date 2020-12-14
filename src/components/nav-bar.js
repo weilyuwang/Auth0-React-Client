@@ -23,13 +23,21 @@ const MainNav = () => (
     >
       Profile
     </Nav.Link>
+    {/* <Nav.Link
+      as={RouterNavLink}
+      to="/node-api"
+      exact
+      activeClassName="router-link-exact-active"
+    >
+      Node Backend API
+    </Nav.Link> */}
     <Nav.Link
       as={RouterNavLink}
       to="/external-api"
       exact
       activeClassName="router-link-exact-active"
     >
-      External API
+      Spring Backend API
     </Nav.Link>
   </Nav>
 );

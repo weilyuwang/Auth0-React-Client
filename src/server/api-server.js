@@ -13,7 +13,6 @@ require("dotenv").config({
 const app = express();
 
 const port = process.env.API_PORT;
-const appOrigin = process.env.APP_ORIGIN;
 const audience = process.env.AUTH0_AUDIENCE;
 const issuer = process.env.AUTH0_ISSUER;
 
@@ -23,7 +22,7 @@ if (!issuer || !audience) {
 
 app.use(morgan("dev"));
 app.use(helmet());
-app.use(cors({ origin: appOrigin }));
+app.use(cors());
 
 const checkJwt = jwt({
   secret: jwksRsa.expressJwtSecret({
