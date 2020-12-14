@@ -14,6 +14,7 @@ const Auth0ProviderWithHistory = ({ children }) => {
     history.push(appState?.returnTo || window.location.pathname);
   };
 
+  // Need to add scope read:messages if the backend API is using read:messages permissions
   return (
     <Auth0Provider
       domain={domain}
@@ -21,6 +22,7 @@ const Auth0ProviderWithHistory = ({ children }) => {
       redirectUri={window.location.origin}
       onRedirectCallback={onRedirectCallback}
       audience={audience}
+      scope="openid profile read:messages"
     >
       {children}
     </Auth0Provider>
