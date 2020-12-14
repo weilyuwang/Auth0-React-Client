@@ -2,6 +2,8 @@
 
 Reference: https://auth0.com/blog/complete-guide-to-react-user-authentication/
 
+## Worked as the front end client of https://github.com/weilyuwang/Auth0-SpringBoot-API
+
 ## Get Started
 
 Install project dependencies:
